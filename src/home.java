@@ -231,7 +231,7 @@ public class home extends javax.swing.JFrame {
 
     private void jMenu18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu18MouseClicked
         // TODO add your handling code here:
-        int a =JOptionPane.showConfirmDialog(null,"Exit?","Select", JOptionPane.YES_NO_OPTION );
+        int a =JOptionPane.showConfirmDialog(null,"Thoat?","Select", JOptionPane.YES_NO_OPTION );
         if(a==0){
             System.exit(0);
         }
@@ -239,7 +239,7 @@ public class home extends javax.swing.JFrame {
 
     private void jMenu15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu15MouseClicked
         // TODO add your handling code here:
-        int a= JOptionPane.showConfirmDialog(null,"Logout?","Select",JOptionPane.YES_NO_OPTION);
+        int a= JOptionPane.showConfirmDialog(null,"Dang xuat?","Select",JOptionPane.YES_NO_OPTION);
         if(a==0)
         {
             setVisible(false);
@@ -258,14 +258,8 @@ public class home extends javax.swing.JFrame {
 
     private void jMenu12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu12MouseClicked
         // TODO add your handling code here:
-            new ListOfMembers().setVisible(true);
+       new ListOfMembers().setVisible(true) ;    
     }//GEN-LAST:event_jMenu12MouseClicked
-
-    private void jMenu13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu13MouseClicked
-        // TODO add your handling code here:
-       
-            new Product().setVisible(true);
-    }//GEN-LAST:event_jMenu13MouseClicked
 
     private void jMenu11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu11MouseClicked
         // TODO add your handling code here:
@@ -300,6 +294,11 @@ public class home extends javax.swing.JFrame {
         // TODO add your handling code here:
          new NEWS().setVisible(true);
     }//GEN-LAST:event_jMenu10MouseClicked
+
+    private void jMenu13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu13MouseClicked
+        // TODO add your handling code here:
+        new Product().setVisible(true) ;
+    }//GEN-LAST:event_jMenu13MouseClicked
 
     /**
      * @param args the command line arguments

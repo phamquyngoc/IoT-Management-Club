@@ -1,3 +1,7 @@
+import java.awt.Color;
+import project.ConnectionProvider;
+import java.sql.*;
+import javax.swing.JOptionPane;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -50,7 +54,6 @@ public class UpdateProduct extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(175, 100));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(400, 300));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
@@ -73,7 +76,7 @@ public class UpdateProduct extends javax.swing.JFrame {
         jLabel3.setText("Tên:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("Member ID:");
+        jLabel4.setText("Mã dự án:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Mô tả:");
@@ -90,6 +93,17 @@ public class UpdateProduct extends javax.swing.JFrame {
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField6.setForeground(new java.awt.Color(102, 102, 102));
+        jTextField6.setText("yyyy-mm-dd");
+        jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField6FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField6FocusLost(evt);
             }
         });
 
@@ -110,6 +124,11 @@ public class UpdateProduct extends javax.swing.JFrame {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
         jButton4.setText("Xóa");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reset.png"))); // NOI18N
         jButton5.setText("Đặt lại");
@@ -231,10 +250,34 @@ public class UpdateProduct extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int checkidPro=0;
+       String idPro=jTextField1.getText();
+       try{
+       Connection con=ConnectionProvider.getCon();
+       Statement st= con.createStatement();
+       ResultSet rs=st.executeQuery("select *from product where idPro='"+idPro+"'");
+       while(rs.next()){
+       checkidPro=1;
+       jTextField1.setEditable(false);
+       jTextField2.setText(rs.getString(2));
+       jTextField3.setText(rs.getString(3));
+       jTextField4.setText(rs.getString(4));
+       jTextField5.setText(rs.getString(5));
+       jTextField6.setText(rs.getString(6));
+       jTextField7.setText(rs.getString(7));
+       }
+       if(checkidPro==0){
+       JOptionPane.showMessageDialog(null,"Product ID khong ton tai!");  
+       }
+       }
+       catch(Exception e){
+       JOptionPane.showMessageDialog(null,e);
+       }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -243,11 +286,75 @@ public class UpdateProduct extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        String idPro=jTextField1.getText();
+       String namePro=jTextField2.getText();
+       String maDuAn=jTextField3.getText();
+       String moTa=jTextField4.getText();
+       String giaTien=jTextField5.getText();
+       String date=jTextField6.getText();
+       String soLuong=jTextField7.getText();
+       try{
+       Connection con=ConnectionProvider.getCon();
+       PreparedStatement ps=con.prepareStatement("update product set namePro=?,maDuAn=?,moTa=?,giaTien=?,date=?,soLuong=? where idPro=?");
+       ps.setString(1, namePro);
+       ps.setString(2, maDuAn);
+       ps.setString(3, moTa);
+       ps.setString(4, giaTien);
+       ps.setString(5, date);
+       ps.setString(6, soLuong);
+       ps.setString(7, idPro);
+       ps.executeUpdate();
+       JOptionPane.showMessageDialog(null, "Cap nhat thanh cong!");
+       setVisible(false);
+       new UpdateProduct().setVisible(true);
+       }
+       catch(Exception e){
+       JOptionPane.showMessageDialog(null, e);
+       }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+         setVisible(false);
+         new UpdateProduct().setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
+        // TODO add your handling code here:
+        if(jTextField6.getText().equals("yyyy-mm-dd"))
+        {
+        jTextField6.setText("");
+        jTextField6.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_jTextField6FocusGained
+
+    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
+        // TODO add your handling code here:
+        if(jTextField6.getText().equals(""))
+        {
+        jTextField6.setText("yyyy-mm-dd");
+        jTextField6.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_jTextField6FocusLost
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        int a=JOptionPane.showConfirmDialog(null, "Xoa san pham?","Select",JOptionPane.YES_NO_OPTION);
+        if(a==0)
+        {
+        String idPro=jTextField1.getText();
+        try{
+        Connection con=ConnectionProvider.getCon();
+        Statement st=con.createStatement();
+        st.executeUpdate("delete from product where idPro='"+idPro+"'");
+        JOptionPane.showMessageDialog(null, "Xoa thanh cong!");
+        setVisible(false);
+        new UpdateProduct().setVisible(true);
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

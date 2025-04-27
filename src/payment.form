@@ -204,12 +204,15 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dd-mm-yyyy"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="yyyy-mm-dd"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="T&#xea;n:"/>
+            <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i mua:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">

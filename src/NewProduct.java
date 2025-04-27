@@ -1,3 +1,7 @@
+import project.ConnectionProvider;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import java.awt.Color;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +18,24 @@ public class NewProduct extends javax.swing.JFrame {
      */
     public NewProduct() {
         initComponents();
+        try{
+        int idPro = 1;
+        String str1=String.valueOf(idPro);
+        jLabel3.setText(str1);
+        Connection con=ConnectionProvider.getCon();
+        Statement st=con.createStatement();
+        ResultSet rs=st.executeQuery("select max(idPro) from product");
+        while(rs.next())
+        {
+        idPro=rs.getInt(1);
+        idPro=idPro+1;
+        String str=String.valueOf(idPro);
+        jLabel3.setText(str);
+        }
+        }
+        catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -53,6 +75,11 @@ public class NewProduct extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/product rs.png"))); // NOI18N
@@ -60,11 +87,11 @@ public class NewProduct extends javax.swing.JFrame {
 
         jLabel2.setText("Product ID:");
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("00");
 
         jLabel4.setText("Tên:");
 
-        jLabel5.setText("Member ID:");
+        jLabel5.setText("Mã dự án:");
 
         jLabel6.setText("Mô tả:");
 
@@ -74,32 +101,33 @@ public class NewProduct extends javax.swing.JFrame {
 
         jLabel9.setText("Số lượng:");
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
 
-        jTextField4.setText("jTextField4");
-
-        jTextField5.setText("jTextField5");
+        jTextField5.setForeground(new java.awt.Color(102, 102, 102));
+        jTextField5.setText("yyyy-mm-dd");
+        jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField5FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField5FocusLost(evt);
+            }
+        });
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
             }
         });
-
-        jTextField6.setText("jTextField6");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
         jButton2.setText("Lưu");
@@ -111,6 +139,11 @@ public class NewProduct extends javax.swing.JFrame {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reset.png"))); // NOI18N
         jButton3.setText("Đặt lại");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,11 +157,12 @@ public class NewProduct extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(38, 38, 38)
                         .addComponent(jLabel3))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel9)
@@ -214,19 +248,74 @@ public class NewProduct extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        String idPro=jLabel3.getText();
+      String namePro=jTextField1.getText();
+      String maDuAn=jTextField3.getText();
+      String moTa=jTextField4.getText();
+      String giaTien= jTextField2.getText();
+      String date=jTextField5.getText();
+      String soLuong=jTextField6.getText();
+      try{
+      Connection con=ConnectionProvider.getCon();
+      PreparedStatement ps=con.prepareStatement("insert into product values (?,?,?,?,?,?,?)");
+      ps.setString(1, idPro);
+      ps.setString(2, namePro);
+      ps.setString(3, maDuAn);
+      ps.setString(4, moTa);
+      ps.setString(5, giaTien);
+      ps.setString(6, date);
+      ps.setString(7, soLuong);
+      ps.executeUpdate();
+      JOptionPane.showMessageDialog(null, "Them thanh cong!");
+      setVisible(false);
+      new NewProduct().setVisible(true);
+      }
+      catch(Exception e){
+      JOptionPane.showMessageDialog(null, e);
+      }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+       
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         setVisible(false);
+         new NewProduct().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
+        // TODO add your handling code here:
+        if(jTextField5.getText().equals("yyyy-mm-dd"))
+        {
+        jTextField5.setText("");
+        jTextField5.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_jTextField5FocusGained
+
+    private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
+        // TODO add your handling code here:
+        if(jTextField5.getText().equals(""))
+        {
+        jTextField5.setText("yyyy-mm-dd");
+        jTextField5.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_jTextField5FocusLost
 
     /**
      * @param args the command line arguments

@@ -40,7 +40,6 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -49,6 +48,7 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,7 +76,6 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
 
         jLabel4.setText("Tên:");
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -85,7 +84,6 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
 
         jLabel5.setText("SĐT:");
 
-        jTextField2.setText("jTextField2");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -94,7 +92,6 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
 
         jLabel6.setText("Email:");
 
-        jTextField3.setText("jTextField3");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -103,16 +100,8 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
 
         jLabel7.setText("Giới tính:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Khác" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
         jLabel8.setText("CCCD:");
 
-        jTextField4.setText("jTextField4");
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -121,7 +110,6 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
 
         jLabel9.setText("Tuổi:");
 
-        jTextField5.setText("jTextField5");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -130,9 +118,19 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
         jButton3.setText("Cập nhật");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
         jButton4.setText("Xóa");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reset.png"))); // NOI18N
         jButton5.setText("Đặt lại");
@@ -142,7 +140,6 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
             }
         });
 
-        jTextField6.setText("jTextField6");
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
@@ -162,7 +159,7 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
                 .addComponent(jButton5)
                 .addGap(74, 74, 74))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(254, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(226, 226, 226)
                 .addComponent(jButton1)
@@ -187,13 +184,13 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addGap(212, 212, 212)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
+                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                            .addComponent(jLabel9)
+                            .addComponent(jTextField7))))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -212,17 +209,17 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton2))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel8))
@@ -238,9 +235,9 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 207, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(268, 268, 268)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton3)
                             .addComponent(jButton4)
@@ -274,10 +271,6 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -300,8 +293,11 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
        jTextField1.setText(rs.getString(2));
        jTextField2.setText(rs.getString(3));
        jTextField3.setText(rs.getString(4));
-       jTextField4.setText(rs.getString(5));
-       jTextField5.setText(rs.getString(6));
+       jTextField7.setText(rs.getString(5));
+       jTextField7.setEditable (false);
+       jTextField4.setText(rs.getString(6));
+       jTextField5.setText(rs.getString(7));
+       
        }
        if(checkidMem==0){
        JOptionPane.showMessageDialog(null,"Member ID khong ton tai!");  
@@ -324,8 +320,54 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
         setVisible(false);
-         new newMember().setVisible(true);
+         new UpdateDeleteMember().setVisible(true);
     }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+       String idMem=jTextField6.getText();
+       String nameMem=jTextField1.getText();
+       String mobileNum=jTextField2.getText();
+       String email=jTextField3.getText();
+       String idCard=jTextField4.getText();
+       String age=jTextField5.getText();
+       try{
+       Connection con=ConnectionProvider.getCon();
+       PreparedStatement ps=con.prepareStatement("update member set nameMem=?,mobileNum=?,email=?,idCard=?,age=? where idMem=?");
+       ps.setString(1, nameMem);
+       ps.setString(2, mobileNum);
+       ps.setString(3, email);
+       ps.setString(4, idCard);
+       ps.setString(5, age);
+       ps.setString(6, idMem);
+       ps.executeUpdate();
+       JOptionPane.showMessageDialog(null, "Cap nhat thanh cong!");
+       setVisible(false);
+       new UpdateDeleteMember().setVisible(true);
+       }
+       catch(Exception e){
+       JOptionPane.showMessageDialog(null, e);
+       }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        int a=JOptionPane.showConfirmDialog(null, "Xoa thanh vien?","Select",JOptionPane.YES_NO_OPTION);
+        if(a==0)
+        {
+        String idMem=jTextField6.getText();
+        try{
+        Connection con=ConnectionProvider.getCon();
+        Statement st=con.createStatement();
+        st.executeUpdate("delete from member where idMem='"+idMem+"'");
+        JOptionPane.showMessageDialog(null, "Xoa thanh cong!");
+        setVisible(false);
+        new UpdateDeleteMember().setVisible(true);
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,7 +410,6 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -384,5 +425,6 @@ public class UpdateDeleteMember extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }

@@ -109,9 +109,10 @@ public class payment extends javax.swing.JFrame {
 
         jLabel3.setText("Ngày:");
 
-        jLabel4.setText("dd-mm-yyyy");
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("yyyy-mm-dd");
 
-        jLabel5.setText("Tên:");
+        jLabel5.setText("Người mua:");
 
         jLabel6.setText("SĐT:");
 
