@@ -3,7 +3,7 @@ import java.sql.*;
 
 /**
  *
- * @author Thinkpad
+ * @author LuongTran
  */
 public class ConnectionProvider {
     public static  Connection getCon(){

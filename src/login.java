@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Thinkpad
+ * @author LuongTran
  */
 public class login extends javax.swing.JFrame {
 
@@ -34,7 +34,7 @@ public class login extends javax.swing.JFrame {
         jPasswordField2 = new javax.swing.JPasswordField();
         jButton3 = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -43,22 +43,23 @@ public class login extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1300, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton2.setBackground(new java.awt.Color(234, 234, 234));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 30, 34, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(954, 10, 30, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         jLabel1.setText("Đăng nhập");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 51, 102));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
         jLabel2.setText("Sai tài khoản hoặc mật khẩu");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, -1, -1));
 
         jTextField1.setText("Nhập tài khoản");
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -69,7 +70,7 @@ public class login extends javax.swing.JFrame {
                 jTextField1FocusLost(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 168, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 260, 260, 40));
 
         jPasswordField2.setText("Nhập mật khẩu");
         jPasswordField2.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -80,8 +81,9 @@ public class login extends javax.swing.JFrame {
                 jPasswordField2FocusLost(evt);
             }
         });
-        getContentPane().add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 168, -1));
+        getContentPane().add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 330, 260, 40));
 
+        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
         jButton3.setText("Đăng nhập");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +91,7 @@ public class login extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 460, 130, 50));
 
         jCheckBox1.setText("Hiện mật khẩu");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -97,17 +99,17 @@ public class login extends javax.swing.JFrame {
                 jCheckBox1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 115, -1));
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 380, 120, 20));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login background.PNG"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, -30, 1620, 750));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login theme.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int a =JOptionPane.showConfirmDialog(null,"Thoát khỏi ứng dụng?","Select", JOptionPane.YES_NO_OPTION );
+        int a =JOptionPane.showConfirmDialog(null,"Exit?","Select", JOptionPane.YES_NO_OPTION );
         if(a==0){
             System.exit(0);
         }
@@ -118,7 +120,7 @@ public class login extends javax.swing.JFrame {
         jLabel2.setVisible(false);
         if(jTextField1.getText().equals("Nhập tài khoản")){
             jTextField1.setText("");
-            jTextField1.setForeground(new Color(0,188,221));
+            jTextField1.setForeground(new Color(0,0,0));
         }
     }//GEN-LAST:event_jTextField1FocusGained
 
@@ -127,7 +129,7 @@ public class login extends javax.swing.JFrame {
         jLabel2.setVisible(false);
         if(jTextField1.getText().equals("")){
             jTextField1.setText("Nhập tài khoản");
-            jTextField1.setForeground(new Color(0,188,221));
+            jTextField1.setForeground(new Color(0,0,0));
         }
     }//GEN-LAST:event_jTextField1FocusLost
 
@@ -136,7 +138,7 @@ public class login extends javax.swing.JFrame {
         jLabel2.setVisible(false);
         if(jPasswordField2.getText().equals("Nhập mật khẩu")){
             jPasswordField2.setText("");
-            jPasswordField2.setForeground(new Color(0,188,221));
+            jPasswordField2.setForeground(new Color(0,0,0));
         }
     }//GEN-LAST:event_jPasswordField2FocusGained
 
@@ -145,7 +147,7 @@ public class login extends javax.swing.JFrame {
         jLabel2.setVisible(false);
         if(jPasswordField2.getText().equals("")){
             jPasswordField2.setText("Nhập mật khẩu");
-            jPasswordField2.setForeground(new Color(0,188,221));
+            jPasswordField2.setForeground(new Color(0,0,0));
         }
     }//GEN-LAST:event_jPasswordField2FocusLost
 
@@ -212,7 +214,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

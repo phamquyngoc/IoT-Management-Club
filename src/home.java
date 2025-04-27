@@ -1,9 +1,15 @@
-import java.awt.Color;
+
 import javax.swing.JOptionPane;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+
 /**
  *
- * @author Thinkpad
-*/
+ * @author LuongTran
+ */
 public class home extends javax.swing.JFrame {
 
     /**
@@ -24,93 +30,186 @@ public class home extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
+        jMenu10 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        jMenu16 = new javax.swing.JMenu();
+        jMenu17 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
+        jMenu11 = new javax.swing.JMenu();
+        jMenu14 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu12 = new javax.swing.JMenu();
+        jMenu13 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
+        jMenu15 = new javax.swing.JMenu();
+        jMenu18 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(51, 102, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 90)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Welcome");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login theme.png"))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 60)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(220, 0, 55));
+        jLabel2.setText("Xin chào!");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(367, 367, 367)
+                .addGap(197, 197, 197)
                 .addComponent(jLabel1)
-                .addContainerGap(907, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(371, 371, 371))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(186, 186, 186)
-                .addComponent(jLabel1)
-                .addContainerGap(510, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(173, 173, 173))
         );
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new member.png"))); // NOI18N
-        jMenu1.setText("Thêm thành viên");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info rs 1.png"))); // NOI18N
+        jMenu1.setText("Tin tức");
+
+        jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info rs 1.png"))); // NOI18N
+        jMenu9.setText("Giới thiệu");
+        jMenu9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                jMenu9MouseClicked(evt);
             }
         });
+        jMenu1.add(jMenu9);
+
+        jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/posting rs1.png"))); // NOI18N
+        jMenu10.setText("Thông báo");
+        jMenu10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu10MouseClicked(evt);
+            }
+        });
+        jMenu1.add(jMenu10);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update & delete member.png"))); // NOI18N
-        jMenu2.setText("Cập nhật và xóa thành viên");
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu2);
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new1.png"))); // NOI18N
+        jMenu3.setText("Thêm mới");
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/list of members.png"))); // NOI18N
-        jMenu3.setText("Danh sách thành viên");
-        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenu16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new1.png"))); // NOI18N
+        jMenu16.setText("Thêm thành viên");
+        jMenu16.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
+                jMenu16MouseClicked(evt);
             }
         });
+        jMenu3.add(jMenu16);
+
+        jMenu17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/product rs1.png"))); // NOI18N
+        jMenu17.setText("Thêm sản phẩm");
+        jMenu17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu17MouseClicked(evt);
+            }
+        });
+        jMenu3.add(jMenu17);
+
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/payment.png"))); // NOI18N
-        jMenu4.setText("Thanh toán");
-        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update & delete1.png"))); // NOI18N
+        jMenu6.setText("Cập nhật");
+
+        jMenu11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update & delete1.png"))); // NOI18N
+        jMenu11.setText("Cập nhật thành viên");
+        jMenu11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu4MouseClicked(evt);
+                jMenu11MouseClicked(evt);
             }
         });
+        jMenu6.add(jMenu11);
+
+        jMenu14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update & delete1.png"))); // NOI18N
+        jMenu14.setText("Cập nhật sản phẩm");
+        jMenu14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu14MouseClicked(evt);
+            }
+        });
+        jMenu6.add(jMenu14);
+
+        jMenuBar1.add(jMenu6);
+
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/list1.png"))); // NOI18N
+        jMenu4.setText("Danh sách");
+
+        jMenu12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/list1.png"))); // NOI18N
+        jMenu12.setText("Danh sách thành viên");
+        jMenu12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu12MouseClicked(evt);
+            }
+        });
+        jMenu4.add(jMenu12);
+
+        jMenu13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/list1.png"))); // NOI18N
+        jMenu13.setText("Danh sách sản phẩm");
+        jMenu13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu13MouseClicked(evt);
+            }
+        });
+        jMenu4.add(jMenu13);
+
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
-        jMenu5.setText("Đăng xuất");
-        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/group up rs 1.png"))); // NOI18N
+        jMenu7.setText("Dự án");
+        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu5MouseClicked(evt);
+                jMenu7MouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(jMenu7);
 
-        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
-        jMenu6.setText("Thoát");
-        jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/payment1.png"))); // NOI18N
+        jMenu8.setText("Tài chính");
+        jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu6MouseClicked(evt);
+                jMenu8MouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu6);
+        jMenuBar1.add(jMenu8);
+
+        jMenu15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout1.png"))); // NOI18N
+        jMenu15.setText("Đăng xuất");
+        jMenu15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu15MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu15);
+
+        jMenu18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit 1.png"))); // NOI18N
+        jMenu18.setText("Thoát");
+        jMenu18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu18MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu18);
 
         setJMenuBar(jMenuBar1);
 
@@ -119,57 +218,88 @@ public class home extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+    private void jMenu18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu18MouseClicked
         // TODO add your handling code here:
-        int a =JOptionPane.showConfirmDialog(null,"Bạn có muốn đăng xuất?","Select", JOptionPane.YES_NO_OPTION );
-        if(a==0){
-            setVisible(false);
-            new login().setVisible(true);
-        }
-    }//GEN-LAST:event_jMenu5MouseClicked
-
-    private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
-        // TODO add your handling code here:
-                int a =JOptionPane.showConfirmDialog(null,"Bạn có muốn thoát?","Select", JOptionPane.YES_NO_OPTION );
+        int a =JOptionPane.showConfirmDialog(null,"Exit?","Select", JOptionPane.YES_NO_OPTION );
         if(a==0){
             System.exit(0);
         }
-    }//GEN-LAST:event_jMenu6MouseClicked
+    }//GEN-LAST:event_jMenu18MouseClicked
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void jMenu15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu15MouseClicked
         // TODO add your handling code here:
-        new newMember().setVisible(true);
-    }//GEN-LAST:event_jMenu1MouseClicked
+        int a= JOptionPane.showConfirmDialog(null,"Logout?","Select",JOptionPane.YES_NO_OPTION);
+        if(a==0)
+        {
+            setVisible(false);
+           new login().setVisible(true);
+        }
+    }//GEN-LAST:event_jMenu15MouseClicked
 
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        // TODO add your handling code here:
-        new UpdateDeleteMember().setVisible(true);
-    }//GEN-LAST:event_jMenu2MouseClicked
+    private void jMenu8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MouseClicked
+            new payment().setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jMenu8MouseClicked
 
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
         // TODO add your handling code here:
-        new ListOfMembers().setVisible(true);
-        
-    }//GEN-LAST:event_jMenu3MouseClicked
+            new GroupUp().setVisible(true);
+    }//GEN-LAST:event_jMenu7MouseClicked
 
-    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+    private void jMenu12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu12MouseClicked
         // TODO add your handling code here:
-        new payment().setVisible(true);
-    }//GEN-LAST:event_jMenu4MouseClicked
+            new ListOfMembers().setVisible(true);
+    }//GEN-LAST:event_jMenu12MouseClicked
+
+    private void jMenu13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu13MouseClicked
+        // TODO add your handling code here:
+       
+            new Product().setVisible(true);
+    }//GEN-LAST:event_jMenu13MouseClicked
+
+    private void jMenu11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu11MouseClicked
+        // TODO add your handling code here:
+       
+            new UpdateDeleteMember().setVisible(true);
+    }//GEN-LAST:event_jMenu11MouseClicked
+
+    private void jMenu14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu14MouseClicked
+        // TODO add your handling code here:
+       
+            new UpdateProduct().setVisible(true);
+    }//GEN-LAST:event_jMenu14MouseClicked
+
+    private void jMenu16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu16MouseClicked
+        // TODO add your handling code here:
+      
+           new newMember().setVisible(true);
+    }//GEN-LAST:event_jMenu16MouseClicked
+
+    private void jMenu17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu17MouseClicked
+        // TODO add your handling code here:
+       
+            new NewProduct().setVisible(true);
+    }//GEN-LAST:event_jMenu17MouseClicked
+
+    private void jMenu9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu9MouseClicked
+        // TODO add your handling code here:
+         new info().setVisible(true);
+    }//GEN-LAST:event_jMenu9MouseClicked
+
+    private void jMenu10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu10MouseClicked
+        // TODO add your handling code here:
+         new NEWS().setVisible(true);
+    }//GEN-LAST:event_jMenu10MouseClicked
 
     /**
      * @param args the command line arguments
@@ -208,12 +338,23 @@ public class home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenu jMenu13;
+    private javax.swing.JMenu jMenu14;
+    private javax.swing.JMenu jMenu15;
+    private javax.swing.JMenu jMenu16;
+    private javax.swing.JMenu jMenu17;
+    private javax.swing.JMenu jMenu18;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
