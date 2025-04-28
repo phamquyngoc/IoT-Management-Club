@@ -5,7 +5,7 @@
 
 /**
  *
- * @author ASUS
+ * @author LuongTran
  */
 public class newNEWS extends javax.swing.JFrame {
 

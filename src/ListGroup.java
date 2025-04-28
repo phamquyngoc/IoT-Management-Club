@@ -1,3 +1,7 @@
+import project.ConnectionProvider;
+import java.sql.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -5,7 +9,7 @@
 
 /**
  *
- * @author ASUS
+ * @author LuongTran
  */
 public class ListGroup extends javax.swing.JFrame {
 
@@ -14,6 +18,17 @@ public class ListGroup extends javax.swing.JFrame {
      */
     public ListGroup() {
         initComponents();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        try {
+            Connection con = ConnectionProvider.getCon();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from project");
+            while (rs.next()) {
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -46,10 +61,7 @@ public class ListGroup extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Mã dự án", "Tên dự án", "Thời gian hoàn thành (dự kiến)", "ID TV1", "Tên TV1", "ID TV2", "Tên TV2", "ID TV3", "Tên TV3", "ID TV4", "Tên TV4"

@@ -1,3 +1,7 @@
+import java.awt.Color;
+import project.ConnectionProvider;
+import java.sql.*;
+import javax.swing.JOptionPane;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -5,7 +9,7 @@
 
 /**
  *
- * @author ASUS
+ * @author LuongTran
  */
 public class UpdateGroup extends javax.swing.JFrame {
 
@@ -14,6 +18,7 @@ public class UpdateGroup extends javax.swing.JFrame {
      */
     public UpdateGroup() {
         initComponents();
+        
     }
 
     /**
@@ -51,6 +56,7 @@ public class UpdateGroup extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -67,17 +73,27 @@ public class UpdateGroup extends javax.swing.JFrame {
 
         jLabel2.setText("Mã dự án:");
 
-        jTextField1.setText("jTextField1");
-
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Tên dự án:");
 
-        jTextField2.setText("jTextField2");
-
         jLabel4.setText("Thời gian hoàn thành (dự kiến):");
 
-        jTextField3.setText("jTextField3");
+        jTextField3.setForeground(new java.awt.Color(102, 102, 102));
+        jTextField3.setText("yyyy-mm-dd");
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
+            }
+        });
 
         jLabel5.setText("Thành viên:");
 
@@ -85,30 +101,29 @@ public class UpdateGroup extends javax.swing.JFrame {
 
         jLabel7.setText("Tên:");
 
-        jTextField4.setText("jTextField4");
-
-        jTextField5.setText("jTextField5");
-
-        jTextField6.setText("jTextField6");
-
-        jTextField7.setText("jTextField7");
-
-        jTextField8.setText("jTextField8");
-
-        jTextField9.setText("jTextField9");
-
-        jTextField10.setText("jTextField10");
-
-        jTextField11.setText("jTextField11");
-
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
         jButton3.setText("Lưu");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
         jButton4.setText("Xóa");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reset.png"))); // NOI18N
         jButton5.setText("Đặt lại");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,20 +137,17 @@ public class UpdateGroup extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addComponent(jTextField2)))))
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2))
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -190,30 +202,28 @@ public class UpdateGroup extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4)
@@ -239,6 +249,117 @@ public class UpdateGroup extends javax.swing.JFrame {
         // TODO add your handling code here:
          setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         int checkidPj=0;
+       String idPj=jTextField1.getText();
+       try{
+       Connection con=ConnectionProvider.getCon();
+       Statement st= con.createStatement();
+       ResultSet rs=st.executeQuery("select *from project where idPj='"+idPj+"'");
+       while(rs.next()){
+       checkidPj=1;
+       jTextField1.setEditable(false);
+       jTextField2.setText(rs.getString(2));
+       jTextField3.setText(rs.getString(3));
+       jTextField4.setText(rs.getString(4));
+       jTextField5.setText(rs.getString(5));
+       jTextField6.setText(rs.getString(6));
+       jTextField7.setText(rs.getString(7));
+       jTextField8.setText(rs.getString(8));
+       jTextField9.setText(rs.getString(9));
+       jTextField10.setText(rs.getString(10));
+       jTextField11.setText(rs.getString(11));
+       }
+       if(checkidPj==0){
+       JOptionPane.showMessageDialog(null,"Ma du an khong ton tai!");  
+       }
+       }
+       catch(Exception e){
+       JOptionPane.showMessageDialog(null,e);
+       }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String idPj=jTextField1.getText();
+       String namePj=jTextField2.getText();
+       String date=jTextField3.getText();
+       String idMem1=jTextField4.getText();
+       String nameMem1=jTextField5.getText();
+       String idMem2=jTextField6.getText();
+       String nameMem2=jTextField7.getText();
+       String idMem3=jTextField8.getText();
+       String nameMem3=jTextField9.getText();
+       String idMem4=jTextField10.getText();
+       String nameMem4=jTextField11.getText();
+       try{
+       Connection con=ConnectionProvider.getCon();
+       PreparedStatement ps=con.prepareStatement("update project set namePj=?,date=?,idMem1=?,nameMem1=?,idMem2=?,nameMem2=?,idMem3=?,nameMem3=?,idMem4=?,nameMem4=? where idPj=?");
+       ps.setString(1, namePj);
+       ps.setString(2, date);
+       ps.setString(3, idMem1);
+       ps.setString(4, nameMem1);
+       ps.setString(5, idMem2);
+       ps.setString(6, nameMem2);
+       ps.setString(7, idMem3);
+       ps.setString(8, nameMem3);
+       ps.setString(9, idMem4);
+       ps.setString(10, nameMem4);
+       ps.setString(11, idPj);
+       ps.executeUpdate();
+       JOptionPane.showMessageDialog(null, "Cap nhat thanh cong!");
+       setVisible(false);
+       new UpdateGroup().setVisible(true);
+       }
+       catch(Exception e){
+       JOptionPane.showMessageDialog(null, e);
+       }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+         new UpdateGroup().setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        int a=JOptionPane.showConfirmDialog(null, "Xoa du an?","Select",JOptionPane.YES_NO_OPTION);
+        if(a==0)
+        {
+        String idPj=jTextField1.getText();
+        try{
+        Connection con=ConnectionProvider.getCon();
+        Statement st=con.createStatement();
+        st.executeUpdate("delete from project where idPj='"+idPj+"'");
+        JOptionPane.showMessageDialog(null, "Xoa thanh cong!");
+        setVisible(false);
+        new UpdateGroup().setVisible(true);
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        // TODO add your handling code here:
+        if(jTextField3.getText().equals("yyyy-mm-dd"))
+        {
+        jTextField3.setText("");
+        jTextField3.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_jTextField3FocusGained
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        // TODO add your handling code here:
+        if(jTextField3.getText().equals(""))
+        {
+        jTextField3.setText("yyyy-mm-dd");
+        jTextField3.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_jTextField3FocusLost
 
     /**
      * @param args the command line arguments

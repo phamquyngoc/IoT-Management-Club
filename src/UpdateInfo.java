@@ -5,7 +5,7 @@
 
 /**
  *
- * @author ASUS
+ * @author LuongTran
  */
 public class UpdateInfo extends javax.swing.JFrame {
 

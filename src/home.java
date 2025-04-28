@@ -33,9 +33,12 @@ public class home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu21 = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu19 = new javax.swing.JMenu();
         jMenu20 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu16 = new javax.swing.JMenu();
         jMenu17 = new javax.swing.JMenu();
@@ -88,11 +91,25 @@ public class home extends javax.swing.JFrame {
 
         jMenu21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info rs 1.png"))); // NOI18N
         jMenu21.setText("Giới thiệu");
-        jMenu21.addMouseListener(new java.awt.event.MouseAdapter() {
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info rs 1.png"))); // NOI18N
+        jMenu1.setText("Sửa giới thiệu");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu21MouseClicked(evt);
+                jMenu1MouseClicked(evt);
             }
         });
+        jMenu21.add(jMenu1);
+
+        jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info rs 1.png"))); // NOI18N
+        jMenu9.setText("Giới thiệu");
+        jMenu9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu9MouseClicked(evt);
+            }
+        });
+        jMenu21.add(jMenu9);
+
         jMenuBar1.add(jMenu21);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/posting rs1.png"))); // NOI18N
@@ -115,6 +132,15 @@ public class home extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenu20);
+
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/posting rs1.png"))); // NOI18N
+        jMenu5.setText("Thông báo");
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
+        jMenu2.add(jMenu5);
 
         jMenuBar1.add(jMenu2);
 
@@ -271,7 +297,7 @@ public class home extends javax.swing.JFrame {
         if(a==0)
         {
             setVisible(false);
-           new login().setVisible(true);
+           new firstPage().setVisible(true);
         }
     }//GEN-LAST:event_jMenu15MouseClicked
 
@@ -334,10 +360,20 @@ public class home extends javax.swing.JFrame {
         new UpdateNEWS().setVisible(true);
     }//GEN-LAST:event_jMenu20MouseClicked
 
-    private void jMenu21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu21MouseClicked
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+        // TODO add your handling code here:
+         new NEWS().setVisible(true);
+    }//GEN-LAST:event_jMenu5MouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
         new UpdateInfo().setVisible(true);
-    }//GEN-LAST:event_jMenu21MouseClicked
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu9MouseClicked
+        // TODO add your handling code here:
+        new info().setVisible(true);
+    }//GEN-LAST:event_jMenu9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -377,6 +413,7 @@ public class home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu13;
@@ -393,9 +430,11 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu28;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

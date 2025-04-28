@@ -1,3 +1,7 @@
+import project.ConnectionProvider;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import java.awt.Color;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +18,24 @@ public class GroupUp extends javax.swing.JFrame {
      */
     public GroupUp() {
         initComponents();
+         try{
+        int idPj = 1;
+        String str1=String.valueOf(idPj);
+        jLabel3.setText(str1);
+        Connection con=ConnectionProvider.getCon();
+        Statement st=con.createStatement();
+        ResultSet rs=st.executeQuery("select max(idPj) from project");
+        while(rs.next())
+        {
+        idPj=rs.getInt(1);
+        idPj=idPj+1;
+        String str=String.valueOf(idPj);
+        jLabel3.setText(str);
+        }
+        }
+        catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -49,6 +71,7 @@ public class GroupUp extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -66,13 +89,20 @@ public class GroupUp extends javax.swing.JFrame {
 
         jLabel2.setText("Mã dự án:");
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("00");
 
         jLabel4.setText("Tên dự án:");
 
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
+        jTextField2.setForeground(new java.awt.Color(102, 102, 102));
+        jTextField2.setText("yyyy-mm-dd");
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
+            }
+        });
 
         jLabel5.setText("Thời gian hoàn thành (dự kiến):");
 
@@ -82,31 +112,18 @@ public class GroupUp extends javax.swing.JFrame {
 
         jLabel8.setText("Tên:");
 
-        jTextField3.setText("jTextField3");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
 
-        jTextField4.setText("jTextField4");
-
-        jTextField5.setText("jTextField5");
-
-        jTextField6.setText("jTextField6");
-
-        jTextField7.setText("jTextField7");
-
-        jTextField8.setText("jTextField8");
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField8ActionPerformed(evt);
             }
         });
 
-        jTextField9.setText("jTextField9");
-
-        jTextField10.setText("jTextField10");
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField10ActionPerformed(evt);
@@ -115,6 +132,11 @@ public class GroupUp extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
         jButton2.setText("Lưu");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reset.png"))); // NOI18N
         jButton3.setText("Đặt lại");
@@ -148,11 +170,13 @@ public class GroupUp extends javax.swing.JFrame {
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(173, 173, 173))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel3)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel4)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(3, 3, 3)
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel6)
@@ -246,6 +270,8 @@ public class GroupUp extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+         setVisible(false);
+         new GroupUp().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -260,6 +286,61 @@ public class GroupUp extends javax.swing.JFrame {
         // TODO add your handling code here:
          setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         String idPj=jLabel3.getText();
+      String namePj=jTextField1.getText();
+      String date=jTextField2.getText();
+      String idMem1=jTextField3.getText();
+      String nameMem1= jTextField4.getText();
+      String idMem2=jTextField5.getText();
+      String nameMem2= jTextField6.getText();
+      String idMem3=jTextField7.getText();
+      String nameMem3= jTextField8.getText();
+      String idMem4=jTextField9.getText();
+      String nameMem4= jTextField10.getText();
+      try{
+      Connection con=ConnectionProvider.getCon();
+      PreparedStatement ps=con.prepareStatement("insert into project values (?,?,?,?,?,?,?,?,?,?,?)");
+      ps.setString(1, idPj);
+      ps.setString(2, namePj);
+      ps.setString(3, date);
+      ps.setString(4, idMem1);
+      ps.setString(5, nameMem1);
+      ps.setString(6, idMem2);
+      ps.setString(7, nameMem2);
+      ps.setString(8, idMem3);
+      ps.setString(9, nameMem3);
+      ps.setString(10, idMem4);
+      ps.setString(11, nameMem4);
+      ps.executeUpdate();
+      JOptionPane.showMessageDialog(null, "Them thanh cong!");
+      setVisible(false);
+      new GroupUp().setVisible(true);
+      }
+      catch(Exception e){
+      JOptionPane.showMessageDialog(null, e);
+      }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        // TODO add your handling code here:
+        if(jTextField2.getText().equals("yyyy-mm-dd"))
+        {
+        jTextField2.setText("");
+        jTextField2.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+        // TODO add your handling code here:
+        if(jTextField2.getText().equals(""))
+        {
+        jTextField2.setText("yyyy-mm-dd");
+        jTextField2.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_jTextField2FocusLost
 
     /**
      * @param args the command line arguments
