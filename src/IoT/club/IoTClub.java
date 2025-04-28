@@ -1,10 +1,10 @@
-package gym.club;
+package IoT.club;
 
 /**
  *
- * @author Thinkpad
+ * @author LuongTran
  */
-public class GymClub {
+public class IoTClub {
 
     /**
      * @param args the command line arguments

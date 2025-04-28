@@ -176,6 +176,9 @@
               <Image iconType="3" name="/images/close.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -218,7 +221,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian ho&#xe0;n th&#xe0;nh (D&#x1ef1; ki&#x1ebf;n):"/>
+            <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian ho&#xe0;n th&#xe0;nh (d&#x1ef1; ki&#x1ebf;n):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
