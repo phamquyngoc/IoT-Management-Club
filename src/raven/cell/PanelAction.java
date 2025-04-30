@@ -4,6 +4,8 @@
  */
 package raven.cell;
 import app.seeNEWS;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -17,6 +19,15 @@ public class PanelAction extends javax.swing.JPanel {
      */
     public PanelAction() {
         initComponents();
+    }
+    
+    public void initEvent(TableActionEvent event, int row){
+    jButton1.addActionListener(new ActionListener(){
+    @Override
+    public void actionPerformed (ActionEvent ae){
+    event.onView(row);
+    }
+    });
     }
 
     /**

@@ -14,13 +14,17 @@ import javax.swing.JCheckBox;
  */
 public class TableActionCellEditor extends DefaultCellEditor {
     
-    public TableActionCellEditor(){
+    private TableActionEvent event;
+    
+    public TableActionCellEditor(TableActionEvent event){
     super(new JCheckBox());
+    this.event = event;
     }
     
     @Override
-    public Component getTableCellEditorComponent(JTable jtable,Object o, boolean bln,int i,int i1){
+    public Component getTableCellEditorComponent(JTable jtable,Object o, boolean bln,int row,int column){
     PanelAction action = new PanelAction();
+    action.initEvent(event, row);
     action.setBackground(jtable.getSelectionBackground());
     return action;
     }

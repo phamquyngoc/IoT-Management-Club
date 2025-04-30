@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
  */
 import raven.cell.TableActionCellRender;
 import raven.cell.TableActionCellEditor;
+import raven.cell.TableActionEvent;
 /**
  *
  * @author LuongTran
@@ -33,8 +34,18 @@ public class NEWS extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
         
+         TableActionEvent event = new TableActionEvent(){
+        @Override
+        public void onView(int row){
+            int idNews = Integer.parseInt(jTable1.getValueAt(row,0).toString());
+            seeNEWS see = new seeNEWS();
+            see.see(idNews);
+            see.setVisible(true);
+        }
+        };
+        
         jTable1.getColumnModel().getColumn(3).setCellRenderer(new TableActionCellRender());
-        jTable1.getColumnModel().getColumn(3).setCellEditor(new TableActionCellEditor());
+        jTable1.getColumnModel().getColumn(3).setCellEditor(new TableActionCellEditor(event));
     }
 
     /**
