@@ -69,7 +69,15 @@ public class ListOfMembers extends javax.swing.JFrame {
             new String [] {
                 "Member ID", "Tên", "SĐT", "Email", "Giới tính", "CCCD", "Tuổi"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

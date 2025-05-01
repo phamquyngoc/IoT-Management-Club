@@ -68,7 +68,15 @@ public class ListGroup extends javax.swing.JFrame {
             new String [] {
                 "Mã dự án", "Tên dự án", "Thời gian hoàn thành (dự kiến)", "ID TV1", "Tên TV1", "ID TV2", "Tên TV2", "ID TV3", "Tên TV3", "ID TV4", "Tên TV4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
