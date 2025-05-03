@@ -84,7 +84,7 @@ public class seeNEWS extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 55)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jTextArea2.setEditable(false);

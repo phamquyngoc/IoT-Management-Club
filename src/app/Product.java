@@ -26,7 +26,7 @@ public class Product extends javax.swing.JFrame {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select * from product");
             while (rs.next()) {
-                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)});
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)});
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -72,11 +72,11 @@ public class Product extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Product ID", "Tên", "Member ID", "Mô tả", "Giá tiền", "Ngày hoàn thiện", "Số lượng"
+                "Product ID", "Tên", "Mô tả", "Giá tiền", "Ngày hoàn thiện", "Số lượng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
