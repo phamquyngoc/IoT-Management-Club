@@ -270,8 +270,8 @@ public class payment extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))))
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,6 +373,10 @@ public class payment extends javax.swing.JFrame {
        Statement st= con.createStatement();
        ResultSet rs=st.executeQuery("select *from product where idPro='"+idPro+"'");
        while(rs.next()){
+       int soLuong = rs.getInt("soLuong");
+       if(soLuong<=0){
+           break;
+       }
        checkidPro=1;
        jTextField1.setEditable(false);
        jTextField5.setText(rs.getString(8));
@@ -388,8 +392,7 @@ public class payment extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        try{
+    try{
         int total = 0;
         String str1=String.valueOf(total);
         jLabel12.setText(str1);
@@ -409,7 +412,6 @@ public class payment extends javax.swing.JFrame {
         catch(Exception e){
         JOptionPane.showMessageDialog(null,e);
         }
-        
         String idTrans=jLabel10.getText();
        String idPro=jTextField1.getText();
        String date=jLabel4.getText();
@@ -429,7 +431,23 @@ public class payment extends javax.swing.JFrame {
       ps.setString(6, email);
       ps.setString(7, cost);
       ps.setString(8, total);
-      ps.executeUpdate();
+      ps.executeUpdate(); 
+      
+      //cap nhat soluong
+      try {
+        Connection con2 = ConnectionProvider.getCon();
+        PreparedStatement ps2 = con2.prepareStatement("UPDATE product SET soLuong = soLuong - 1 WHERE idPro = ? AND soLuong > 0");
+        ps2.setString(1, idPro);
+        int rowsUpdated = ps2.executeUpdate();
+        if (rowsUpdated == 0) {
+        JOptionPane.showMessageDialog(null, "Sản phẩm đã hết hàng hoặc không tồn tại.");
+        return; // Ngưng thực hiện nếu không cập nhật được số lượng
+        }
+        } catch (Exception ex) {
+        JOptionPane.showMessageDialog(null, "Lỗi khi cập nhật số lượng sản phẩm: " + ex);
+        return; // Ngưng thực hiện nếu có lỗi
+        }
+
       JOptionPane.showMessageDialog(null, "Thanh toan thanh cong!");
       setVisible(false);
       new payment().setVisible(true);
