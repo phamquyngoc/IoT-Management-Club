@@ -44,8 +44,8 @@ public class NEWS extends javax.swing.JFrame {
         }
         };
         
-        jTable1.getColumnModel().getColumn(3).setCellRenderer(new TableActionCellRender());
-        jTable1.getColumnModel().getColumn(3).setCellEditor(new TableActionCellEditor(event));
+        jTable1.getColumnModel().getColumn(2).setCellRenderer(new TableActionCellRender());
+        jTable1.getColumnModel().getColumn(2).setCellEditor(new TableActionCellEditor(event));
     }
 
     /**
@@ -81,11 +81,11 @@ public class NEWS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Số thông báo", "Tiêu đề", "Nội dung", ""
+                "Số thông báo", "Tiêu đề", ""
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
